@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="p-6 border-t border-gray-200 flex justify-between items-center">
-                <span class="text-xl font-bold text-gray-800">د.ل {{ $course->price }}</span>
+                <span class="text-xl font-bold text-gray-800">${{ $course->price }}</span>
                 <a href="{{ route('courses.show', $course) }}" class="btn-brand font-bold py-2 px-4 rounded-md text-sm transition duration-300">View Details</a>
             </div>
         </div>
