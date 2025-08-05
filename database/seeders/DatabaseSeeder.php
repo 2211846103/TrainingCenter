@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Services\ImageService;
@@ -42,12 +43,15 @@ class DatabaseSeeder extends Seeder
             'download certificate'
         ]);
 
-        $admin = User::create([
+        $admin = User::createOrFirst([
             "name" => "Admin",
             "email" => "admin@gmail.com",
             "password" => "admin",
             "profile_image" => ImageService::generate()
         ]);
         $admin->assignRole('admin');
+
+        Course::factory(15)->create();
+        User::factory(20)->client()->create();
     }
 }
