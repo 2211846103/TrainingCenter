@@ -1,3 +1,8 @@
+@php
+use \App\Services\StripeService;
+$service = new StripeService();
+
+@endphp
 @extends('layouts.dashboard')
 
 @section('title', 'Admin Dashboard')
@@ -15,9 +20,7 @@
 @endsection
 
 @section('content')
-    @php
-    use \App\Services\StripeService;
-    @endphp
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
         <div class="bg-white rounded-lg shadow-[0_0_30px_0_rgba(82,63,105,0.05)] p-6">
             <div class="text-gray-500">Total Courses</div>
@@ -33,7 +36,7 @@
         </div>
         <div class="bg-white rounded-lg shadow-[0_0_30px_0_rgba(82,63,105,0.05)] p-6">
             <div class="text-gray-500">Revenue (This Month)</div>
-            <div class="text-3xl font-bold text-gray-800 mt-1">${{ number_format(new StripeService()->getMonthlyRevenue()) }}</div>
+            <div class="text-3xl font-bold text-gray-800 mt-1">${{ number_format($service->getMonthlyRevenue()) }}</div>
         </div>
     </div>
 

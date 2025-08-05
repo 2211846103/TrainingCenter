@@ -54,9 +54,13 @@
                             <a href="{{ route('courses.students', $course) }}" class="px-3 py-1 text-xs font-semibold text-blue-800 bg-blue-100 rounded-md hover:bg-blue-200">View Participants</a>
                             <a href="{{ route('materials.manage', $course) }}" class="px-3 py-1 text-xs font-semibold text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200">Manage Materials</a>
                         </td>
-                        @else
+                        @elseif($course->status=="archived")
                         <td class="px-6 py-4 space-x-2">
                             <a href="{{ route('materials.archiveView', ["course" => $course, "material" => $firstMaterial]) }}" class="px-3 py-1 text-xs font-semibold text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200">View Archive</a>
+                        </td>
+                        @else 
+                        <td class="px-6 py-4 space-x-2">
+                            <a href="{{ route('materials.manage', $course) }}" class="px-3 py-1 text-xs font-semibold text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200">Manage Materials</a>
                         </td>
                         @endif
                     </tr>

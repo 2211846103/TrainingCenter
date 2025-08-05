@@ -15,7 +15,7 @@ class ImageService
 
     public static function generate(string $id = null, string $text = "Placeholder")
     {
-        $image = ImageManager::imagick()->create(static::$width, static::$height)->fill(substr(md5($text), 0, 6));
+        $image = ImageManager::gd()->create(static::$width, static::$height)->fill(substr(md5($text), 0, 6));
         $image->text(Str::upper($text), static::$width / 2, static::$height / 2, function (FontFactory $font) {
             $font->filename(public_path('fonts/Poppins-Medium.ttf'));
             $font->size(48);
@@ -34,7 +34,7 @@ class ImageService
 
     public static function storeCourseThumbnail(string $id, UploadedFile $file)
     {
-        $image = ImageManager::imagick()->read($file)
+        $image = ImageManager::gd()->read($file)
                                         ->resize(static::$width, static::$height)
                                         ->encodeByExtension('jpg');
         
@@ -47,7 +47,7 @@ class ImageService
 
     public function storeUserProfilePic(string $id, UploadedFile $file)
     {
-        $image = ImageManager::imagick()->read($file)
+        $image = ImageManager::gd()->read($file)
                                         ->resize(static::$width, static::$height)
                                         ->encodeByExtension('jpg');
         

@@ -75,8 +75,8 @@ class CourseController extends Controller
 
         
         $course = Course::create($data);
-        
-        $stripe = new StripeService()->createCourseProduct(
+        $service = new StripeService();
+        $stripe  = $service->createCourseProduct(
             $course->title,
             $course->description,
             $course->price * 100,
@@ -196,3 +196,4 @@ class CourseController extends Controller
         return redirect()->route('courses.manage');
     }
 }
+
