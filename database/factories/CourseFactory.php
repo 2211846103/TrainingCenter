@@ -32,7 +32,7 @@ class CourseFactory extends Factory
             "price" => fake()->randomFloat(2, 0, 200),
             "category" => fake()->word(),
             "capacity" => fake()->randomNumber(2),
-            "status" => fake()->randomElement(["draft", "published", "archived"]),
+            "status" => fake()->randomElement(["published", "archived"]),
             "certified" => fake()->boolean(20)
         ];
     }
