@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Material;
 use App\Models\User;
 use App\Services\ImageService;
+use App\Services\StripeService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -49,6 +50,15 @@ class CourseFactory extends Factory
                     'file_path' => 'misc/placeholder.mp4', // tweak too
                 ]);
             }
+
+            $service = new StripeService();
+            $stripe  = $service->createCourseProduct(
+                $course->title,
+                $course->description,
+                $course->price * 100,
+            );
+            $course->stripe_price_id = $stripe['price_id'];
+            $course->save();
         });
     }
 }
