@@ -22,20 +22,32 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Photo</label>
                     <div class="mt-2 flex items-center space-x-4">
+                        @error('profile_image')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                         <img class="h-16 w-16 rounded-full bg-gray-200" src="{{ Storage::url(Auth::user()->profile_image) }}" alt="Current profile photo">
                         <input type="file" name="profile_image" id="profile_image" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                     </div>
                 </div>
                 
                 <div>
+                    @error('name')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                     <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
                 <div>
+                    @error('email')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                     <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
                   <div>
+                    @error('phone')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                     <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
                     <input type="tel" id="phone" name="phone" value="{{ old('phone', Auth::user()->phone) }}" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
@@ -58,10 +70,16 @@
             @method('PUT')
             <div class="p-8 space-y-6">
                 <div>
+                    @error('password')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
                     <input type="password" id="password" name="password" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
                 <div>
+                    @error('password_confirmation')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
                     <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">Confirm New Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
